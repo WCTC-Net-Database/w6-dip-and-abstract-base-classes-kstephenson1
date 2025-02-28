@@ -15,16 +15,15 @@ public class TradeItemCommand : ICommand
 
     private readonly IEntity _unit;
     private readonly IItem _item;
-    private IEntity _target;
-    public TradeItemCommand(IEntity unit, IItem item)
+    private readonly IEntity _target;
+    public TradeItemCommand(IEntity unit, IItem item, IEntity target)
     {
         _unit = unit;
         _item = item;
+        _target = target;
     }
     public void Execute()
     {
-        _target = UserInterface.UnitSelectionMenu.Display($"Select unit to trade {_item} to.");
-
         if (_unit is IHaveInventory && _target is IHaveInventory)
         {
             if (!_target.Inventory.IsFull())

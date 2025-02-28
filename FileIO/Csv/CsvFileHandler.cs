@@ -4,7 +4,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.Globalization;
-using w6_assignment_ksteph.Config;
+using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Inventories;
 

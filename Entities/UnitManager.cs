@@ -7,26 +7,24 @@ using w6_assignment_ksteph.UI;
 
 namespace w6_assignment_ksteph.Entities;
 
-public static class UnitManager
+public class UnitManager
 {
     // The UnitManager class is a static class that holds lists of units for reference.
+    private FileManager<Character> _characterFileManager;
+    private FileManager<Monster> _monsterFileManager;
     public static UnitSet<Character> Characters { get; private set; } = new();
     public static UnitSet<Monster> Monsters { get; private set; } = new();
 
-    public static void DisplayCharacters()                       //Displays each c's information.
+    public UnitManager(FileManager<Character> characterFileManager, FileManager<Monster> monsterFileManager)
     {
-        Console.Clear();
-
-        foreach (Character character in Characters.Units)
-        {
-            character.DisplayCharacterInfo();
-        }
+        _characterFileManager = characterFileManager;
+        _monsterFileManager = monsterFileManager;
     }
 
 
-    public static void ImportUnits()                           //Imports the characters from the csv file and stores them.
+    public void ImportUnits()                           //Imports the characters from the csv file and stores them.
     {
-        List<Character> importedCharacters = new FileManager<Character>().Import<Character>();
+        List<Character> importedCharacters = _characterFileManager.Import<Character>();
 
         foreach (Character c in importedCharacters)
         {
@@ -39,7 +37,7 @@ public static class UnitManager
             if (c.Class == "Wizard")    Characters.AddUnit(new Wizard(c.Name, c.Class, c.Level, c.HitPoints, c.Inventory, c.Position));
         }
 
-        List<Monster> importedMonsters = new FileManager<Monster>().Import<Monster>();
+        List<Monster> importedMonsters = _monsterFileManager.Import<Monster>();
         foreach (Monster monster in importedMonsters)
         {
             // Units imported from the monsters file are imported as monsters.  This block of text converts these monsters to their respective types.
@@ -68,19 +66,9 @@ public static class UnitManager
         }
     }
 
-    public static void ExportUnits()                           //Exports the stored characters into the specified csv file
+    public void ExportUnits()                           //Exports the stored characters into the specified csv file
     {
-        new FileManager<Character>().Export<Character>(Characters.Units);
-        new FileManager<Monster>().Export<Monster>(Monsters.Units);
-    }
-
-    public static void AddCharacter(Character character)            // Adds a new c to the stored characters list.
-    {
-        Characters.AddUnit(character);
-    }
-
-    public static void DeleteCharacter(Character character)         // Removes a c from the stored characters list.
-    {
-        Characters.DeleteUnit(character);
+        _characterFileManager.Export<Character>(Characters.Units);
+        _monsterFileManager.Export<Monster>(Monsters.Units);
     }
 }

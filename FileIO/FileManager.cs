@@ -2,12 +2,12 @@
 
 using w6_assignment_ksteph.FileIO.Csv;
 using w6_assignment_ksteph.FileIO.Json;
-using w6_assignment_ksteph.Config;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.Entities.Characters;
 using w6_assignment_ksteph.Entities.Monsters;
 using w6_assignment_ksteph.Items.WeaponItems;
 using w6_assignment_ksteph.Items;
+using w6_assignment_ksteph.Configuration;
 
 public class FileManager<T>
 {

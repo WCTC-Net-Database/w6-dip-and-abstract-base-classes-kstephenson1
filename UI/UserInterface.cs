@@ -13,18 +13,18 @@ using w6_assignment_ksteph.UI.Menus.InteractiveMenus;
 namespace w6_assignment_ksteph.UI;
 
 // The UserInterface class contains elements for the UI including the main menu and the exit message.
-public static class UserInterface
+public class UserInterface
 {
-    public static InteractiveMainMenu MainMenu { get; private set; } = new();
-    public static InteractiveSelectionMenu<IEntity> UnitSelectionMenu { get; private set; } = new();
-    public static InteractiveSelectionMenu<ICommand> CommandMenu { get; private set; } = new();
-    public static InteractiveSelectionMenu<IItem> InventoryMenu { get; private set; } = new();
-    public static InteractiveSelectionMenu<ICommand> ItemMenu { get; private set; } = new();
-    public static InteractiveSelectionMenu<bool> BoolMenu { get; private set; } = new();
-    public static Menu ExitMenu { get; private set; } = new();
+    public InteractiveMainMenu MainMenu { get; private set; } = new();
+    public InteractiveSelectionMenu<IEntity> UnitSelectionMenu { get; private set; } = new();
+    public InteractiveSelectionMenu<ICommand> CommandMenu { get; private set; } = new();
+    public InteractiveSelectionMenu<IItem> InventoryMenu { get; private set; } = new();
+    public InteractiveSelectionMenu<ICommand> ItemMenu { get; private set; } = new();
+    public InteractiveSelectionMenu<bool> BoolMenu { get; private set; } = new();
+    public Menu ExitMenu { get; private set; } = new();
 
     // Builds main menu and the exit message.
-    public static void BuildMenus() 
+    public void BuildMenus() 
     {
         BuildInteractiveMainMenu();
         BuildUnitSelectMenu();
@@ -33,11 +33,11 @@ public static class UserInterface
 
     // Builds the main menu.  The main menu stores an index (AutoNumber), option, description, and an action.
     // Used for quick and easy reference later when these menus are shown and the selection action is executed.
-    private static void BuildInteractiveMainMenu() 
+    private void BuildInteractiveMainMenu() 
                                                    
     {
         MainMenu = new();
-        MainMenu.AddMenuItem("Display All Characters",  "Displays all characters and items in their inventory.",    UnitManager.DisplayCharacters);
+        MainMenu.AddMenuItem("Display All Characters",  "Displays all characters and items in their inventory.",    CharacterUtilities.DisplayCharacters);
         MainMenu.AddMenuItem("Find Character",          "Finds an existing character by name.",                     CharacterUtilities.FindCharacter);
         MainMenu.AddMenuItem("New Character",           "Creates a new character.",                                 CharacterUtilities.NewCharacter);
         MainMenu.AddMenuItem("Level Up Chracter",       "Levels an existing character.",                            CharacterUtilities.LevelUp);
@@ -47,7 +47,7 @@ public static class UserInterface
     }
 
     // Builds the exit message.  It's technically a menu but who cares.
-    private static void BuildExitMenu()
+    private void BuildExitMenu()
     {
         ExitMenu = new();
         ExitMenu.AddMenuItem("                                                                      ");
@@ -59,7 +59,7 @@ public static class UserInterface
 
     // Builds the unit selection menu.  This menu takes all the characters and monsters and puts them into a selectable menu.  This menu
     // displays the characters in green, monsters in red, and contains basic unit info and health bars.  Downed units are dimmed out.
-    public static void BuildUnitSelectMenu()
+    public void BuildUnitSelectMenu()
     {
         int prevIndex = UnitSelectionMenu.GetSelectedIndex();
         UnitSelectionMenu = new(prevIndex);
@@ -98,7 +98,7 @@ public static class UserInterface
     // if the provided unit can do that command.  If the command is usable by that unit, the command is build into the table, and it is hidden if not.
     // Then the menu is ran with the prompt provided and returns the command selected by the user.  These commands are null and don't do anything.
     // Additional processing outside of this method is required.
-    public static ICommand ShowCommandMenu(IEntity unit, string prompt)
+    public ICommand ShowCommandMenu(IEntity unit, string prompt)
     {
         
         CommandMenu = new();
@@ -129,7 +129,7 @@ public static class UserInterface
     }
 
     // A menu that asks the user for a yes or no and returns the selection.
-    public static void BuildBoolMenu()
+    public void BuildBoolMenu()
     {
         BoolMenu = new();
         BoolMenu.AddMenuItem("Yes", "", true);
@@ -140,7 +140,7 @@ public static class UserInterface
     // The ShowInventoryMenu is similar to the command menu, except it returns an item instead of a command.  It checks the provided unit
     // to retrieve a list of items in the unit's inventory, and displays those items in a menu and asks the user to select one.
 
-    public static IItem ShowInventoryMenu(IEntity unit, string prompt)
+    public IItem ShowInventoryMenu(IEntity unit, string prompt)
     {
         InventoryMenu = new();
         foreach (IItem item in unit.Inventory.Items!)
@@ -173,12 +173,12 @@ public static class UserInterface
 
     // The ShowItemMenu is similar to the command menu.  It checks the provided item to see if the item can be used with certain actions
     // and returns each action the item is usable in.  Asks the user to select one of the provided actions.
-    public static ICommand ShowItemMenu(IItem item, string prompt)
+    public ICommand ShowItemMenu(IItem item, string prompt)
     {
         ItemMenu = new();
 
         ItemMenu.AddMenuItem($"Drop Item", $"Get rid of the item forever.", new DropItemCommand(null!, null!));
-        ItemMenu.AddMenuItem($"Trade Item", $"Gives this item to someone else.", new TradeItemCommand(null!, null!));
+        ItemMenu.AddMenuItem($"Trade Item", $"Gives this item to someone else.", new TradeItemCommand(null!, null!, null!));
 
         if (item is IConsumableItem consumableItem)
         {
@@ -203,11 +203,11 @@ public static class UserInterface
         return ItemMenu.Display(prompt);
     }
 
-    public static void Exit() // Shows the exit menu.
+    public void Exit() // Shows the exit menu.
     {
         Console.Clear();
         ExitMenu.Show();
     }
 
-    private static void DoNothing() { } // This method does nothing...  or does it?
+    private void DoNothing() { } // This method does nothing...  or does it?
 }

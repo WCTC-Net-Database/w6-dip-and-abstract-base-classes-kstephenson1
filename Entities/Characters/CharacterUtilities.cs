@@ -2,7 +2,7 @@
 
 using Spectre.Console;
 using System.Runtime.CompilerServices;
-using w6_assignment_ksteph.Config;
+using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.DataHelper;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Inventories;
@@ -33,9 +33,7 @@ public class CharacterUtilities
         Console.Clear();
         Console.WriteLine($"\nWelcome, {name} the {characterClass}! You are level {level} and your equipment includes: {string.Join(", ", inventory)}.\n");
 
-        UnitManager.AddCharacter(new(name, characterClass, level, hitPoints, inventory));
-
-        UnitManager.ExportUnits();
+        UnitManager.Characters.AddUnit(new(name, characterClass, level, hitPoints, inventory));
     }
 
     public static void FindCharacter() // Asks the user for a name and displays a character based on input.
@@ -81,6 +79,16 @@ public class CharacterUtilities
         else
         {
             AnsiConsole.MarkupLine($"[Red]No characters found with the name {characterName}[/]\n");
+        }
+    }
+
+    public static void DisplayCharacters()                       //Displays each c's information.
+    {
+        Console.Clear();
+
+        foreach (Character character in UnitManager.Characters.Units)
+        {
+            character.DisplayCharacterInfo();
         }
     }
 }
