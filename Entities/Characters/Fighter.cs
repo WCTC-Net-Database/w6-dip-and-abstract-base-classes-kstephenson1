@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Inventories;
 

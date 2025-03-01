@@ -1,5 +1,6 @@
 [
   {
+    "$type": "Monsters.Ghost",
     "Name": "Poltergeist",
     "Class": "Ghost",
     "Level": 4,
@@ -12,6 +13,7 @@
     }
   },
   {
+    "$type": "Monsters.Goblin",
     "Name": "Ruthless Treasure-Gather",
     "Class": "Goblin",
     "Level": 2,
@@ -24,6 +26,7 @@
     }
   },
   {
+    "$type": "Monsters.Archer",
     "Name": "Sniper",
     "Class": "Archer",
     "Level": 5,
@@ -36,6 +39,7 @@
     }
   },
   {
+    "$type": "Monsters.Mage",
     "Name": "Studious Spellcaster",
     "Class": "Mage",
     "Level": 2,
@@ -48,6 +52,7 @@
     }
   },
   {
+    "$type": "Monsters.Cleric",
     "Name": "Doctor of the Fallen",
     "Class": "Cleric",
     "Level": 3,

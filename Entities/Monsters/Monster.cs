@@ -1,4 +1,5 @@
-﻿using w6_assignment_ksteph.Inventories;
+﻿using w6_assignment_ksteph.DataTypes;
+using w6_assignment_ksteph.Inventories;
 
 namespace w6_assignment_ksteph.Entities.Monsters;
 

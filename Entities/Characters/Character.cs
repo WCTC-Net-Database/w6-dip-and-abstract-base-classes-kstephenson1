@@ -1,6 +1,7 @@
 ﻿namespace w6_assignment_ksteph.Entities.Characters;
 
 using System.Text.Json.Serialization;
+using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.Inventories;
 using w6_assignment_ksteph.UI;
 

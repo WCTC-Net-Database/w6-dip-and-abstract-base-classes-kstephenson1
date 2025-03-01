@@ -4,6 +4,7 @@ using Spectre.Console;
 using System.Runtime.CompilerServices;
 using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.DataHelper;
+using w6_assignment_ksteph.FileIO;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Inventories;
 using w6_assignment_ksteph.Items;

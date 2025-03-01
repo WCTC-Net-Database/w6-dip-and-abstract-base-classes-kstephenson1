@@ -83,5 +83,70 @@
       "x": -1,
       "z": 1
     }
+  },
+  {
+    "$type": "Monsters.EnemyGhost",
+    "Name": "Poltergeist",
+    "Class": "Ghost",
+    "Level": 4,
+    "HP": 14,
+    "MaxHitPoints": 14,
+    "Equipment": [],
+    "Position": {
+      "x": 6,
+      "y": 6
+    }
+  },
+  {
+    "$type": "Monsters.EnemyGoblin",
+    "Name": "Ruthless Treasure-Gather",
+    "Class": "Goblin",
+    "Level": 2,
+    "HP": 11,
+    "MaxHitPoints": 11,
+    "Equipment": [],
+    "Position": {
+      "x": 5,
+      "y": 7
+    }
+  },
+  {
+    "$type": "Monsters.EnemyArcher",
+    "Name": "Sniper",
+    "Class": "Archer",
+    "Level": 5,
+    "HP": 12,
+    "MaxHitPoints": 12,
+    "Equipment": [],
+    "Position": {
+      "x": 4,
+      "y": 4
+    }
+  },
+  {
+    "$type": "Monsters.EnemyMage",
+    "Name": "Studious Spellcaster",
+    "Class": "Mage",
+    "Level": 2,
+    "HP": 7,
+    "MaxHitPoints": 7,
+    "Equipment": [],
+    "Position": {
+      "x": 9,
+      "y": 3
+    }
+  },
+  {
+    "$type": "Monsters.EnemyCleric",
+    "Name": "Doctor of the Fallen",
+    "Class": "Cleric",
+    "Level": 3,
+    "HP": 9,
+    "MaxHitPoints": 9,
+    "Equipment": [],
+    "Position": {
+      "x": 0,
+      "y": 1
+    }
   }
 ]

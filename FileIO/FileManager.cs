@@ -8,6 +8,8 @@ using w6_assignment_ksteph.Entities.Monsters;
 using w6_assignment_ksteph.Items.WeaponItems;
 using w6_assignment_ksteph.Items;
 using w6_assignment_ksteph.Configuration;
+using w6_assignment_ksteph.Interfaces;
+using w6_assignment_ksteph.Entities;
 
 public class FileManager<T>
 {
@@ -19,18 +21,20 @@ public class FileManager<T>
     private Type _type = typeof(T);
     private Dictionary<Type, int> _typeDict = new()
     {
-            {typeof(Character),0},
-            {typeof(Monster),1},
-            {typeof(WeaponItem),2},
+            {typeof(Unit),0},
+            {typeof(Character),1},
+            {typeof(Monster),2},
+            {typeof(WeaponItem),3},
         };
 
     private string GetFilePath()
     {
         return _typeDict[_type] switch
         {
-            0 => "Files/characters",
-            1 => "Files/monsters",
-            2 => "Files/weapons",
+            0 => "Files/units",
+            //1 => "Files/characters",
+            //2 => "Files/monsters",
+            3 => "Files/weapons",
             _ => throw new ArgumentOutOfRangeException($"GetFilePath() has invalid type ({_typeDict})")
         };
 

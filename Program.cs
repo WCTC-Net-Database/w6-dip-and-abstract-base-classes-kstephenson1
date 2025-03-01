@@ -15,8 +15,9 @@ class Program
         ServiceCollection services = new ServiceCollection();
 
         services.AddTransient<UnitManager>();
-        services.AddTransient<FileManager<Character>>();
-        services.AddTransient<FileManager<Monster>>();
+        //services.AddTransient<FileManager<Character>>();
+        //services.AddTransient<FileManager<Monster>>();
+        services.AddTransient<FileManager<Unit>>();
         services.AddTransient<UserInterface>();
 
         ServiceProvider provider = services.BuildServiceProvider();
