@@ -15,6 +15,11 @@ namespace w6_assignment_ksteph.UI;
 // The UserInterface class contains elements for the UI including the main menu and the exit message.
 public class UserInterface
 {
+
+
+    public UnitManager _unitManager;
+    public CharacterUtilities _characterUtilities;
+    public FileManager<Unit> _unitFileManager;
     public InteractiveMainMenu MainMenu { get; private set; } = new();
     public InteractiveSelectionMenu<IEntity> UnitSelectionMenu { get; private set; } = new();
     public InteractiveSelectionMenu<ICommand> CommandMenu { get; private set; } = new();
@@ -22,6 +27,13 @@ public class UserInterface
     public InteractiveSelectionMenu<ICommand> ItemMenu { get; private set; } = new();
     public InteractiveSelectionMenu<bool> BoolMenu { get; private set; } = new();
     public Menu ExitMenu { get; private set; } = new();
+    public UserInterface(UnitManager unitManager, CharacterUtilities characterUtilities, FileManager<Unit> unitFileManager)
+    {
+        _unitManager = unitManager;
+        _characterUtilities = characterUtilities;
+        _unitFileManager = unitFileManager;
+
+    }
 
     // Builds main menu and the exit message.
     public void BuildMenus() 
@@ -37,11 +49,11 @@ public class UserInterface
                                                    
     {
         MainMenu = new();
-        MainMenu.AddMenuItem("Display All Characters",  "Displays all characters and items in their inventory.",    CharacterUtilities.DisplayCharacters);
-        MainMenu.AddMenuItem("Find Character",          "Finds an existing character by name.",                     CharacterUtilities.FindCharacter);
-        MainMenu.AddMenuItem("New Character",           "Creates a new character.",                                 CharacterUtilities.NewCharacter);
-        MainMenu.AddMenuItem("Level Up Chracter",       "Levels an existing character.",                            CharacterUtilities.LevelUp);
-        MainMenu.AddMenuItem("Change File Format",      "Changes the file format between Csv and Json",             FileManager<Character>.SwitchFileType);
+        MainMenu.AddMenuItem("Display All Characters",  "Displays all characters and items in their inventory.",    _characterUtilities.DisplayCharacters);
+        MainMenu.AddMenuItem("Find Character",          "Finds an existing character by name.",                     _characterUtilities.FindCharacter);
+        MainMenu.AddMenuItem("New Character",           "Creates a new character.",                                 _characterUtilities.NewCharacter);
+        MainMenu.AddMenuItem("Level Up Chracter",       "Levels an existing character.",                            _characterUtilities.LevelUp);
+        MainMenu.AddMenuItem("Change File Format",      "Changes the file format between Csv and Json",             _unitFileManager.SwitchFileType);
         MainMenu.AddMenuItem("Start Game",              "",                                                         DoNothing);
         MainMenu.BuildTable();
     }
@@ -65,7 +77,7 @@ public class UserInterface
         UnitSelectionMenu = new(prevIndex);
 
         // Adds all the characters to the unit list using green letters.
-        foreach (IEntity unit in UnitManager.Characters.Units)
+        foreach (IEntity unit in _unitManager.Characters.Units)
         {
             // Strikethrough and dim the unit info if the unit is not alive.
             if (unit.HitPoints <= 0)
@@ -78,7 +90,7 @@ public class UserInterface
             }
         }
         // Adds all the monsters to the unit list using red letters.
-        foreach (IEntity unit in UnitManager.Monsters.Units)
+        foreach (IEntity unit in _unitManager.Monsters.Units)
         {
             if (unit.HitPoints <= 0)
             {

@@ -24,8 +24,6 @@ public class Character : Unit
         Inventory.Unit = this;
     }
 
-    public void DisplayCharacterInfo() => CharacterUI.DisplayCharacterInfo(this); // Displays the character info.
-
     public override string ToString()
     {
         return $"{Name},{Class},{Level},{HitPoints},{Inventory}";

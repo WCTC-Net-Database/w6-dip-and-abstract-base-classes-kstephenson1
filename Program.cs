@@ -14,11 +14,13 @@ class Program
     {
         ServiceCollection services = new ServiceCollection();
 
-        services.AddTransient<UnitManager>();
+        services.AddSingleton<UnitManager>();
         //services.AddTransient<FileManager<Character>>();
         //services.AddTransient<FileManager<Monster>>();
-        services.AddTransient<FileManager<Unit>>();
+        services.AddSingleton<FileManager<Unit>>();
         services.AddTransient<UserInterface>();
+        services.AddTransient<CharacterUtilities>();
+        services.AddTransient<CharacterUI>();
 
         ServiceProvider provider = services.BuildServiceProvider();
 

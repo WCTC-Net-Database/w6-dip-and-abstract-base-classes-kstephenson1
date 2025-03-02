@@ -5,11 +5,11 @@ using w6_assignment_ksteph.Items;
 
 namespace w6_assignment_ksteph.UI;
 
-public static class CharacterUI
+public class CharacterUI
 {
     // CharacterUI helps display character information in a nice little table.
 
-    public static void DisplayCharacterInfo(Character character) // Displays the character's info
+    public void DisplayCharacterInfo(Character character) // Displays the character's info
     {
         // Builds a character table with 2 lines: Name, Level and Class.
         Grid charTable = new Grid().Width(25).AddColumn();

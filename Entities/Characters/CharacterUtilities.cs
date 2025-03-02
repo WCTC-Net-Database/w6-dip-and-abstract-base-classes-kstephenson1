@@ -1,18 +1,24 @@
 ﻿namespace w6_assignment_ksteph.Entities.Characters;
 
 using Spectre.Console;
-using System.Runtime.CompilerServices;
 using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.DataHelper;
-using w6_assignment_ksteph.FileIO;
-using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Inventories;
 using w6_assignment_ksteph.Items;
+using w6_assignment_ksteph.UI;
 
 public class CharacterUtilities
 {
+    public CharacterUI _characterUI;
+    public UnitManager _unitManager;
     // CharacterFunctions class contains fuctions that manipulate characters based on user input.
-    public static void NewCharacter() // Creates a new character.  Asks for name, class, level, hitpoints, and items.
+
+    public CharacterUtilities(CharacterUI characterUI, UnitManager unitManager)
+    {
+        _characterUI = characterUI;
+        _unitManager = unitManager;
+    }
+    public void NewCharacter() // Creates a new character.  Asks for name, class, level, hitpoints, and items.
     {
         string name = Input.GetString("Enter your character's name: ");
         string characterClass = Input.GetString("Enter your character's class: ");
@@ -34,10 +40,10 @@ public class CharacterUtilities
         Console.Clear();
         Console.WriteLine($"\nWelcome, {name} the {characterClass}! You are level {level} and your equipment includes: {string.Join(", ", inventory)}.\n");
 
-        UnitManager.Characters.AddUnit(new(name, characterClass, level, hitPoints, inventory));
+        _unitManager.Characters.AddUnit(new(name, characterClass, level, hitPoints, inventory));
     }
 
-    public static void FindCharacter() // Asks the user for a name and displays a character based on input.
+    public void FindCharacter() // Asks the user for a name and displays a character based on input.
     {
         string characterName = Input.GetString("What is the name of the character you would like to search for? ");
         Character character = FindCharacterByName(characterName)!;
@@ -45,7 +51,7 @@ public class CharacterUtilities
 
         if (character != null)
         {
-            character.DisplayCharacterInfo();
+            _characterUI.DisplayCharacterInfo(character);
         }
         else
         {
@@ -53,12 +59,12 @@ public class CharacterUtilities
         }
     }
 
-    private static Character? FindCharacterByName(string name) // Finds and returns a character based on input.
+    private Character? FindCharacterByName(string name) // Finds and returns a character based on input.
     {
-        return UnitManager.Characters.Units.Where(character => string.Equals(character.Name, name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+        return _unitManager.Characters.Units.Where(character => string.Equals(character.Name, name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
     }
 
-    public static void LevelUp() //Asks the user for a character to level up, then displays that character.
+    public void LevelUp() //Asks the user for a character to level up, then displays that character.
     {
         string characterName = Input.GetString("What is the name of the character that you would like to level up? ");
         Character character = FindCharacterByName(characterName)!;
@@ -70,7 +76,7 @@ public class CharacterUtilities
             {
                 character.Level++;
                 AnsiConsole.MarkupLine($"[Green]Congratulations! {character.Name} has reached level {character.Level}[/]\n");
-                character.DisplayCharacterInfo();
+                _characterUI.DisplayCharacterInfo(character);
             }
             else
             {
@@ -83,13 +89,13 @@ public class CharacterUtilities
         }
     }
 
-    public static void DisplayCharacters()                       //Displays each c's information.
+    public void DisplayCharacters()                       //Displays each c's information.
     {
         Console.Clear();
 
-        foreach (Character character in UnitManager.Characters.Units)
+        foreach (Character character in _unitManager.Characters.Units)
         {
-            character.DisplayCharacterInfo();
+            _characterUI.DisplayCharacterInfo(character);
         }
     }
 }

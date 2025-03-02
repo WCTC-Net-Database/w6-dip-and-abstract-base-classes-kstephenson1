@@ -2,8 +2,6 @@
 using w6_assignment_ksteph.Entities.Monsters;
 using w6_assignment_ksteph.FileIO;
 using w6_assignment_ksteph.Interfaces;
-using w6_assignment_ksteph.Items;
-using w6_assignment_ksteph.UI;
 
 namespace w6_assignment_ksteph.Entities;
 
@@ -11,8 +9,8 @@ public class UnitManager
 {
     // The UnitManager class is a static class that holds lists of units for reference.
     private FileManager<Unit> _unitFileManager;
-    public static UnitSet<Character> Characters { get; private set; } = new();
-    public static UnitSet<Monster> Monsters { get; private set; } = new();
+    public UnitSet<Character> Characters { get; private set; } = new();
+    public UnitSet<Monster> Monsters { get; private set; } = new();
 
     public UnitManager(FileManager<Unit> unitFileManager)
     {
