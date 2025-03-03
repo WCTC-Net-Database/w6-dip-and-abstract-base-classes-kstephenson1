@@ -2,7 +2,7 @@
 
 namespace w6_assignment_ksteph.UI;
 
-public class Menu
+public abstract class Menu
 {
     // The Menus class is an abstract(ish) class to build other menus off of.  The Menus class holds a table which is part of the user interface
     // which is displayed to the user.  The Menu also holds menu items, which can store different types of data.  It can be used by itself if you
@@ -16,7 +16,7 @@ public class Menu
         _menuItems.Add(new MenuItem(_menuItems.Count + 1, name));
     }
 
-    public virtual void BuildTable() // Builds and stores a custom table for the menu using the menu items stored.
+    protected virtual void BuildTable() // Builds and stores a custom table for the menu using the menu items stored.
     {
         _table.AddColumn("Header");
 

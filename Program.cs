@@ -5,6 +5,7 @@ using w6_assignment_ksteph.Entities.Characters;
 using w6_assignment_ksteph.Entities.Monsters;
 using w6_assignment_ksteph.FileIO;
 using w6_assignment_ksteph.UI;
+using w6_assignment_ksteph.UI.Menus.InteractiveMenus;
 
 namespace w6_assignment_ksteph;
 
@@ -14,13 +15,17 @@ class Program
     {
         ServiceCollection services = new ServiceCollection();
 
-        services.AddSingleton<UnitManager>();
-        //services.AddTransient<FileManager<Character>>();
-        //services.AddTransient<FileManager<Monster>>();
-        services.AddSingleton<FileManager<Unit>>();
         services.AddTransient<UserInterface>();
         services.AddTransient<CharacterUtilities>();
         services.AddTransient<CharacterUI>();
+        services.AddTransient<CommandMenu>();
+        services.AddTransient<InventoryMenu>();
+        services.AddTransient<ItemCommandMenu>();
+        services.AddTransient<ExitMenu>();
+        services.AddSingleton<FileManager<Unit>>();
+        services.AddTransient<MainMenu>();
+        services.AddSingleton<UnitManager>();
+        services.AddTransient<UnitSelectionMenu>();
 
         ServiceProvider provider = services.BuildServiceProvider();
 

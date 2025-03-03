@@ -43,16 +43,16 @@ public class GameEngine
         // The Initialization method runs a few things that need to be done before the main part of the program runs.
 
         _unitManager.ImportUnits(); //Imports the caracters from the csv or json file.
-        _userInterface.BuildMenus(); // Builds the menus and prepares the user interface tables.
     }
 
     public void Run()
     {
         // Shows the main menu.  Allows you to add/edit characters before the game is started.
-        _userInterface.MainMenu.RunInteractiveMenu();
+        _userInterface.MainMenu.Display();
 
         // Builds the unit select menu.
-        _userInterface.BuildUnitSelectMenu();
+        _userInterface.MainMenu.Update();
+        _userInterface.UnitSelectionMenu.Update();
 
         while (true)
         {
@@ -64,7 +64,7 @@ public class GameEngine
             if (unit1.HitPoints <= 0) continue;
 
             // Asks the user to choose an action for unit.
-            ICommand command = _userInterface.ShowCommandMenu(unit1, $"Select action for {unit1.Name}");
+            ICommand command = _userInterface.CommandMenu.Display(unit1, $"Select action for {unit1.Name}");
             if (command == null) continue; // Go back was selected, sends back to unit selection.
 
             // If the unit is able to move, the unit moves.
@@ -79,13 +79,13 @@ public class GameEngine
                 if (unit1.Inventory.Items!.Count > 0)
                 {
                     // Shows a list of items that are in the selected unit's inventory and asks the user to select an item.
-                    IItem item = _userInterface.ShowInventoryMenu(unit1, $"Select item for {unit1.Name}.");
+                    IItem item = _userInterface.InventoryMenu.Display(unit1, $"Select item for {unit1.Name}.");
 
                     // Item is null if the user selects go back.
                     if ( item != null)
                     {
                         // Checks the items to see what commands are allowed, displays those commands to the user and asks for a selection
-                        ICommand itemCommand = _userInterface.ShowItemMenu(item, $"Select action for {unit1.Name} to use on {item.Name}");
+                        ICommand itemCommand = _userInterface.ItemCommandMenu.Display(item, $"Select action for {unit1.Name} to use on {item.Name}");
 
                         // Command is null if the user selects "Go Back"
                         if ( itemCommand != null ) 
@@ -140,7 +140,7 @@ public class GameEngine
             }
 
             // Rebuilds the unit selection menu so that the health bars are updated.
-            _userInterface.BuildUnitSelectMenu();
+            _userInterface.UnitSelectionMenu.Update();
 
             // Waits for user input.  Escape leaves the program and any other button loops the process.
             AnsiConsole.MarkupLine($"\nPress [green][[ANY KEY]][/] to continue...");

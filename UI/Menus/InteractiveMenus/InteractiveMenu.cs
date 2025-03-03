@@ -1,8 +1,9 @@
 ﻿using Spectre.Console;
+using System.Data;
 
 namespace w6_assignment_ksteph.UI.Menus.InteractiveMenus;
 
-public class InteractiveMenu : Menu
+public abstract class InteractiveMenu : Menu
 {
     // The interactive menu is a menu where you can select the options by moving the arrow selector up and down
     // using the arrow or w/s keys. The MainMenu contains items that have 4 parts, the index, the name, the
@@ -23,20 +24,20 @@ public class InteractiveMenu : Menu
         _menuItems.Add(new InteractiveMenuItem(_menuItems.Count, name, desc));
     }
 
-    public virtual void RunInteractiveMenu()
+    public virtual void Display()
     {
         bool exit = false;
         while (exit != true)
         {
             Console.Clear();
-            BuildTable();
+            Update();
             Show();
             ConsoleKey key = ReturnValidKey();
             DoKeyAction(key, out exit);
         }
     }
 
-    public override void BuildTable()
+    protected override void BuildTable()
     {
         _table = new();
         // Creates a table using Spectre.Console and stores that table for later.
@@ -122,7 +123,10 @@ public class InteractiveMenu : Menu
                 break;
         }
     }
-
+    public virtual void Update()
+    {
+        BuildTable();
+    }
     public int GetSelectedIndex() => _selectedIndex;
 }
 

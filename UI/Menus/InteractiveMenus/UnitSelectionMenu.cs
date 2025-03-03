@@ -1,0 +1,71 @@
+﻿using w6_assignment_ksteph.Entities;
+using w6_assignment_ksteph.Interfaces;
+
+namespace w6_assignment_ksteph.UI.Menus.InteractiveMenus;
+
+public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
+{
+
+    // The MainMenu contains items that have 4 parts, the index, the name, the description, and the action that
+    // is completed when that menu item is chosen.
+
+    private readonly UnitManager _unitManager;
+
+    public UnitSelectionMenu(UnitManager unitManager)
+    {
+        _unitManager = unitManager;
+    }
+
+    public override IEntity Display(string prompt)
+    {
+        IEntity selection = default!;
+        bool exit = false;
+        while (exit != true)
+        {
+            Console.Clear();
+            Console.WriteLine(prompt);
+            Update();
+            BuildTable();
+            Show();
+            ConsoleKey key = ReturnValidKey();
+            selection = DoKeyActionReturnUnit(key, out exit);
+        }
+        return selection;
+    }
+
+    public override void Update()
+    {
+        _menuItems = new();
+
+        // Adds all the characters to the unit list using green letters.
+        foreach (IEntity unit in _unitManager.Characters.Units)
+        {
+            // Strikethrough and dim the unit info if the unit is not alive.
+            if (unit.HitPoints <= 0)
+            {
+                AddMenuItem($"[green][dim][strikethrough]{unit.Name} Level {unit.Level} {unit.Class}[/][/][/]", $" {unit.GetHealthBar()}", unit);
+            }
+            else
+            {
+                AddMenuItem($"[green][bold]{unit.Name}[/][/] Level {unit.Level} {unit.Class}", $" {unit.GetHealthBar()}", unit);
+            }
+        }
+        // Adds all the monsters to the unit list using red letters.
+        foreach (IEntity unit in _unitManager.Monsters.Units)
+        {
+            if (unit.HitPoints <= 0)
+            {
+                // Strikethrough and dim the unit info if the unit is not alive.
+                AddMenuItem($"[red][dim][strikethrough]{unit.Name} Level {unit.Level} {unit.Class}[/][/][/]", $" {unit.GetHealthBar()}", unit);
+            }
+            else
+            {
+                AddMenuItem($"[red][bold]{unit.Name}[/][/] Level {unit.Level} {unit.Class}", $" {unit.GetHealthBar()}", unit);
+            }
+        }
+        AddMenuItem($"Exit Game", $"", null!);
+
+        BuildTable();
+    }
+}
+

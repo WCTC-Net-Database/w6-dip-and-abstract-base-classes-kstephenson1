@@ -20,7 +20,7 @@ public class InteractiveSelectionMenu<T> : InteractiveMenu
         _menuItems.Add(new InteractiveSelectionMenuItem<T>(_menuItems.Count, name, desc, selection));
     }
 
-    public T Display(string prompt)
+    public virtual T Display(string prompt)
     {
         T selection = default!;
         bool exit = false;
@@ -28,7 +28,7 @@ public class InteractiveSelectionMenu<T> : InteractiveMenu
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            BuildTable();
+            Display();
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
