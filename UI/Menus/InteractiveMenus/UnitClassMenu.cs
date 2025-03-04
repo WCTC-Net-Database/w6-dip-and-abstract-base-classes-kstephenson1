@@ -52,11 +52,7 @@ public class UnitClassMenu : InteractiveSelectionMenu<Type>
             AddMenuItem($"{unitType.Name}", $"", unitType);
         }
 
-        //AddMenuItem($"[green][dim][strikethrough]{unit.Name} Level {unit.Level} {unit.Class}[/][/][/]", $" {unit.GetHealthBar()}", unit);
-
-
-
-        AddMenuItem($"Cancel", $"", null!);
+        AddMenuItem($"[[Go back]]", $"", null!);
 
         BuildTable();
     }
