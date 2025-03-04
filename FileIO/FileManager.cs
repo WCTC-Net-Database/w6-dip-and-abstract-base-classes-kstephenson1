@@ -3,13 +3,11 @@
 using w6_assignment_ksteph.FileIO.Csv;
 using w6_assignment_ksteph.FileIO.Json;
 using w6_assignment_ksteph.DataTypes;
-using w6_assignment_ksteph.Entities.Characters;
-using w6_assignment_ksteph.Entities.Monsters;
 using w6_assignment_ksteph.Items.WeaponItems;
 using w6_assignment_ksteph.Items;
 using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.Interfaces;
-using w6_assignment_ksteph.Entities;
+using w6_assignment_ksteph.Entities.Abstracts;
 
 public class FileManager<T>
 {
@@ -21,9 +19,9 @@ public class FileManager<T>
     private Type _type = typeof(T);
     private Dictionary<Type, int> _typeDict = new()
     {
-            {typeof(Unit),0},
-            {typeof(Character),1},
-            {typeof(Monster),2},
+            {typeof(UnitBase),0},
+            {typeof(CharacterBase),1},
+            {typeof(MonsterBase),2},
             {typeof(WeaponItem),3},
         };
 

@@ -1,9 +1,9 @@
 ﻿using CsvHelper.Configuration;
-using w6_assignment_ksteph.Entities;
+using w6_assignment_ksteph.Entities.Abstracts;
 
 namespace w6_assignment_ksteph.FileIO.Csv.Converters;
 
-public class UnitMap : ClassMap<Unit>
+public class UnitMap : ClassMap<UnitBase>
 {
     // The UnitMap assists the turning the csv file into units.
     // This class allows the inventory to be imported as a custom Inventories object instead of a string with

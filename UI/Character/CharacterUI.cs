@@ -1,5 +1,5 @@
 ﻿using Spectre.Console;
-using w6_assignment_ksteph.Entities.Characters;
+using w6_assignment_ksteph.Entities.Abstracts;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Items;
 
@@ -9,7 +9,7 @@ public class CharacterUI
 {
     // CharacterUI helps display character information in a nice little table.
 
-    public void DisplayCharacterInfo(Character character) // Displays the character's info
+    public void DisplayCharacterInfo(CharacterBase character) // Displays the character's info
     {
         // Builds a character table with 2 lines: Name, Level and Class.
         Grid charTable = new Grid().Width(25).AddColumn();
