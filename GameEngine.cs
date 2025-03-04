@@ -1,5 +1,4 @@
 ﻿using Spectre.Console;
-using System.Diagnostics.Metrics;
 using w6_assignment_ksteph.Commands;
 using w6_assignment_ksteph.Commands.ItemCommands;
 using w6_assignment_ksteph.Commands.UnitCommands;
@@ -7,7 +6,6 @@ using w6_assignment_ksteph.DataHelper;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
-using w6_assignment_ksteph.Items;
 using w6_assignment_ksteph.Items.WeaponItems;
 using w6_assignment_ksteph.UI;
 

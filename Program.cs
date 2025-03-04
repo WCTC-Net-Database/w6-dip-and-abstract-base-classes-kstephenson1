@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.Entities;
-using w6_assignment_ksteph.Entities.Characters;
-using w6_assignment_ksteph.Entities.Monsters;
+using w6_assignment_ksteph.Entities.Abstracts;
 using w6_assignment_ksteph.FileIO;
 using w6_assignment_ksteph.UI;
 using w6_assignment_ksteph.UI.Menus.InteractiveMenus;
@@ -22,8 +20,9 @@ class Program
         services.AddTransient<InventoryMenu>();
         services.AddTransient<ItemCommandMenu>();
         services.AddTransient<ExitMenu>();
-        services.AddSingleton<FileManager<Unit>>();
+        services.AddSingleton<FileManager<UnitBase>>();
         services.AddTransient<MainMenu>();
+        services.AddSingleton<UnitClassMenu>();
         services.AddSingleton<UnitManager>();
         services.AddTransient<UnitSelectionMenu>();
 
