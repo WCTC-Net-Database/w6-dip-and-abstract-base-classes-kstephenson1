@@ -15,9 +15,9 @@ using w6_assignment_ksteph.Inventories;
 using w6_assignment_ksteph.Items;
 using w6_assignment_ksteph.Items.WeaponItems;
 
-namespace w6_assignment_ksteph.Entities;
+namespace w6_assignment_ksteph.Entities.Abstracts;
 
-public abstract class Unit : IEntity, ITargetable, IAttack, IHaveInventory
+public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
 {
     // Unit is an abstract class that holds basic unit properties and functions.
 
@@ -46,38 +46,45 @@ public abstract class Unit : IEntity, ITargetable, IAttack, IHaveInventory
     [TypeConverter(typeof(CsvPositionConverter))]          // CsvHelper Attribute that helps CsvHelper import a new Position struct instead of a string.
     public virtual Position Position { get; set; } = new();
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual CommandInvoker Invoker { get; set; } = new();
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual UseItemCommand UseItemCommand { get; set; } = null!;
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual EquipCommand EquipCommand { get; set; } = null!;
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
 
     public virtual DropItemCommand DropItemCommand { get; set; } = null!;
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual TradeItemCommand TradeItemCommand { get; set; } = null!;
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual AttackCommand AttackCommand { get; set; } = null!;
 
-    [Ignore] [JsonIgnore]
+    [Ignore]
+    [JsonIgnore]
     public virtual MoveCommand MoveCommand { get; set; } = null!;
 
     [Ignore]
     [JsonIgnore]
     public UnitStats Stats { get; set; } = null!;
 
-    public Unit()
+    public UnitBase()
     {
         Inventory.Unit = this;
     }
 
-    public Unit(string name, string characterClass, int level, int hitPoints, Inventory inventory)
+    public UnitBase(string name, string characterClass, int level, int hitPoints, Inventory inventory)
     {
         Name = name;
         Class = characterClass;
@@ -129,7 +136,7 @@ public abstract class Unit : IEntity, ITargetable, IAttack, IHaveInventory
     // Triggers when this unit dies.
     public virtual void OnDeath()
     {
-        
+
     }
 
     // Function to check to see if unit should be dead.
