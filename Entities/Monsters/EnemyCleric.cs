@@ -1,13 +1,14 @@
 ﻿using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
+using w6_assignment_ksteph.Entities.Abstracts;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Interfaces.UnitClasses;
 using w6_assignment_ksteph.Inventories;
 
 namespace w6_assignment_ksteph.Entities.Monsters;
 
-public class EnemyCleric : Monster, ICleric
+public class EnemyCleric : MonsterBase, ICleric
 {
     // An Cleric unit that is able to heal and cast spells.
     public EnemyCleric()
