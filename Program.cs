@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using w6_assignment_ksteph.Commands;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Entities.Abstracts;
 using w6_assignment_ksteph.FileIO;
@@ -16,11 +17,12 @@ class Program
         services.AddTransient<UserInterface>();
         services.AddTransient<CharacterUtilities>();
         services.AddTransient<CharacterUI>();
+        services.AddTransient<CommandHandler>();
         services.AddTransient<CommandMenu>();
-        services.AddTransient<InventoryMenu>();
-        services.AddTransient<ItemCommandMenu>();
         services.AddTransient<ExitMenu>();
         services.AddSingleton<FileManager<UnitBase>>();
+        services.AddTransient<InventoryMenu>();
+        services.AddTransient<ItemCommandMenu>();
         services.AddTransient<MainMenu>();
         services.AddSingleton<UnitClassMenu>();
         services.AddSingleton<UnitManager>();
@@ -30,8 +32,9 @@ class Program
 
         UnitManager unitManager = provider.GetRequiredService<UnitManager>();
         UserInterface userInterface = provider.GetRequiredService<UserInterface>();
+        CommandHandler commandHandler = provider.GetRequiredService<CommandHandler>();
 
-        GameEngine engine = new GameEngine(unitManager, userInterface);
+        GameEngine engine = new GameEngine(unitManager, userInterface, commandHandler);
         engine.StartGameEngine();
     }
 }
