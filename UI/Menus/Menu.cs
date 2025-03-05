@@ -16,7 +16,7 @@ public abstract class Menu
         _menuItems.Add(new MenuItem(_menuItems.Count + 1, name));
     }
 
-    protected virtual void BuildTable() // Builds and stores a custom table for the menu using the menu items stored.
+    protected virtual void BuildTable(string exitMessage) // Builds and stores a custom table for the menu using the menu items stored.
     {
         _table.AddColumn("Header");
 

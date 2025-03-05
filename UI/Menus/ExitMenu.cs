@@ -14,7 +14,7 @@ public class ExitMenu : Menu
     public ExitMenu()
     {
         Update();
-        BuildTable();
+        BuildTable(null!);
     }
 
     public void Display()

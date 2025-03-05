@@ -16,7 +16,7 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
         _unitManager = unitManager;
     }
 
-    public override IEntity Display(string prompt)
+    public override IEntity Display(string prompt, string exitMessage   )
     {
         IEntity selection = default!;
         bool exit = false;
@@ -24,8 +24,8 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            Update();
-            BuildTable();
+            Update(exitMessage);
+            BuildTable(exitMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
@@ -33,7 +33,7 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
         return selection;
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         _menuItems = new();
 
@@ -63,9 +63,7 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
                 AddMenuItem($"[red][bold]{unit.Name}[/][/] Level {unit.Level} {unit.Class}", $" {unit.GetHealthBar()}", unit);
             }
         }
-        AddMenuItem($"Exit Game", $"", null!);
-
-        BuildTable();
+        AddMenuItem(exitMessage, $"", null!);
     }
 }
 

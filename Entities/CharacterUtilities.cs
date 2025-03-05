@@ -26,7 +26,7 @@ public class CharacterUtilities
     public void NewCharacter() // Creates a new character.  Asks for name, class, level, hitpoints, and items.
     {
         string name = Input.GetString("Enter your character's name: ");
-        Type characterClass = _unitClassMenu.Display($"Please select a class for {name}");
+        Type characterClass = _unitClassMenu.Display($"Please select a class for {name}", "[[Cancel Character Creation]]");
         if (characterClass == null) return;
         int level = Input.GetInt("Enter your character's level: ", 1, Config.CHARACTER_LEVEL_MAX, $"character level must be 1-{Config.CHARACTER_LEVEL_MAX}");
         int hitPoints = Input.GetInt("Enter your character's maximum hit points: ", 1, "must be greater than 0");

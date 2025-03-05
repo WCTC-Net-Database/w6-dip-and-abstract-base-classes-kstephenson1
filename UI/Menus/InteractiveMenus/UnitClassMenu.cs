@@ -21,7 +21,7 @@ public class UnitClassMenu : InteractiveSelectionMenu<Type>
         _unitManager = unitManager;
     }
 
-    public override Type Display(string prompt)
+    public override Type Display(string prompt, string exitMessage)
     {
         Type selection = default!;
         bool exit = false;
@@ -29,8 +29,8 @@ public class UnitClassMenu : InteractiveSelectionMenu<Type>
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            Update();
-            BuildTable();
+            Update(exitMessage);
+            BuildTable(exitMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
@@ -38,7 +38,7 @@ public class UnitClassMenu : InteractiveSelectionMenu<Type>
         return selection;
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         _menuItems = new();
 
@@ -52,9 +52,7 @@ public class UnitClassMenu : InteractiveSelectionMenu<Type>
             AddMenuItem($"{unitType.Name}", $"", unitType);
         }
 
-        AddMenuItem($"[[Go back]]", $"", null!);
-
-        BuildTable();
+        AddMenuItem(exitMessage, $"", null!);
     }
 }
 

@@ -15,12 +15,12 @@ public class ItemCommandMenu : InteractiveSelectionMenu<ICommand>
     // The MainMenu contains items that have 4 parts, the index, the name, the description, and the action that
     // is completed when that menu item is chosen.
 
-    public override void Display()
+    public override void Display(string errorMessage)
     {
         throw new ArgumentException("CommandMenu(unit, prompt) requires a unit.");
     }
 
-    public ICommand Display(IItem item, string prompt)
+    public ICommand Display(IItem item, string prompt, string exitMessage)
     {
         ICommand selection = default!;
         bool exit = false;
@@ -28,7 +28,8 @@ public class ItemCommandMenu : InteractiveSelectionMenu<ICommand>
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            Update(item);
+            Update(item, exitMessage);
+            BuildTable(exitMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
@@ -36,12 +37,12 @@ public class ItemCommandMenu : InteractiveSelectionMenu<ICommand>
         return selection;
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         throw new ArgumentException("Update(item) requires an item.");
     }
 
-    public void Update(IItem item)
+    public void Update(IItem item, string exitMessage)
     {
         _menuItems = new();
 
@@ -66,9 +67,7 @@ public class ItemCommandMenu : InteractiveSelectionMenu<ICommand>
             }
         }
 
-        AddMenuItem("Go Back", "", null!);
-
-        BuildTable();
+        AddMenuItem(exitMessage, "", null!);
     }
 }
 

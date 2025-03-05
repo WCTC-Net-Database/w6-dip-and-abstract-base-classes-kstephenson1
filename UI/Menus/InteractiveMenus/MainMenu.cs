@@ -33,7 +33,7 @@ public class MainMenu : InteractiveMenu
         menuItems[selection].Selection(); // Runs the action selected.
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         _menuItems = new();
         AddMenuItem("Display All Characters", "Displays all characters and items in their inventory.", _characterUtilities.DisplayCharacters);
@@ -41,8 +41,8 @@ public class MainMenu : InteractiveMenu
         AddMenuItem("New Character", "Creates a new character.", _characterUtilities.NewCharacter);
         AddMenuItem("Level Up Chracter", "Levels an existing character.", _characterUtilities.LevelUp);
         AddMenuItem("Change File Format", "Changes the file format between Csv and Json", _unitFileManager.SwitchFileType);
-        AddMenuItem("Start Game", "", DoNothing);
-        BuildTable();
+        AddMenuItem(exitMessage, "", DoNothing);
+        BuildTable(exitMessage);
     }
 
     protected override bool MenuSelectEnter()

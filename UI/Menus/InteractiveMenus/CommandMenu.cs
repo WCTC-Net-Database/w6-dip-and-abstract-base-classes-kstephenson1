@@ -21,12 +21,12 @@ public class CommandMenu : InteractiveSelectionMenu<ICommand>
         _unitManager = unitManager;
     }
 
-    public override void Display()
+    public override void Display(string errorMessage)
     {
         throw new ArgumentException("CommandMenu(unit, prompt) requires a unit.");
     }
 
-    public ICommand Display(IEntity unit, string prompt)
+    public ICommand Display(IEntity unit, string prompt, string exitMessage)
     {
         ICommand selection = default!;
         bool exit = false;
@@ -34,8 +34,8 @@ public class CommandMenu : InteractiveSelectionMenu<ICommand>
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            Update(unit);
-            BuildTable();
+            Update(unit, exitMessage);
+            BuildTable(exitMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
@@ -43,12 +43,12 @@ public class CommandMenu : InteractiveSelectionMenu<ICommand>
         return selection;
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         throw new ArgumentException("Update(unit) requires a unit.");
     }
 
-    public void Update(IEntity unit)
+    public void Update(IEntity unit, string exitMessage)
     {
         _menuItems = new();
 
@@ -71,9 +71,7 @@ public class CommandMenu : InteractiveSelectionMenu<ICommand>
         if (unit is IHeal || unit is ICastable)
             AddMenuItem("Cast", "Casts a spell.", new CastCommand(null!, "null"));
 
-        AddMenuItem("Go Back", "", null!);
-
-        BuildTable();
+        AddMenuItem(exitMessage, "", null!);
     }
 }
 

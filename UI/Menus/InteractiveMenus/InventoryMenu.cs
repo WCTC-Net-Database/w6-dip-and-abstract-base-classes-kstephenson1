@@ -15,12 +15,12 @@ public class InventoryMenu : InteractiveSelectionMenu<IItem>
     // The MainMenu contains items that have 4 parts, the index, the name, the description, and the action that
     // is completed when that menu item is chosen.
 
-    public override void Display()
+    public override void Display(string errorMessage)
     {
         throw new ArgumentException("CommandMenu(unit, prompt) requires a unit.");
     }
 
-    public IItem Display(IEntity unit, string prompt)
+    public IItem Display(IEntity unit, string prompt, string exitMessage)
     {
         IItem selection = default!;
         bool exit = false;
@@ -28,7 +28,8 @@ public class InventoryMenu : InteractiveSelectionMenu<IItem>
         {
             Console.Clear();
             Console.WriteLine(prompt);
-            Update(unit);
+            Update(unit, exitMessage);
+            BuildTable(exitMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             selection = DoKeyActionReturnUnit(key, out exit);
@@ -36,12 +37,12 @@ public class InventoryMenu : InteractiveSelectionMenu<IItem>
         return selection;
     }
 
-    public override void Update()
+    public override void Update(string exitMessage)
     {
         throw new ArgumentException("Update(item) requires an item.");
     }
 
-    public void Update(IEntity unit)
+    public void Update(IEntity unit, string exitMessage)
     {
         _menuItems = new();
 
@@ -68,9 +69,7 @@ public class InventoryMenu : InteractiveSelectionMenu<IItem>
                 AddMenuItem(item.Name, item.Description, item);
             }
         }
-        AddMenuItem("Go Back", "", null!);
-
-        BuildTable();
+        AddMenuItem(exitMessage, "", null!);
     }
 }
 

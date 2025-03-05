@@ -24,20 +24,20 @@ public abstract class InteractiveMenu : Menu
         _menuItems.Add(new InteractiveMenuItem(_menuItems.Count, name, desc));
     }
 
-    public virtual void Display()
+    public virtual void Display(string errorMessage)
     {
         bool exit = false;
         while (exit != true)
         {
             Console.Clear();
-            Update();
+            Update(errorMessage);
             Show();
             ConsoleKey key = ReturnValidKey();
             DoKeyAction(key, out exit);
         }
     }
 
-    protected override void BuildTable()
+    protected override void BuildTable(string exitMessage)
     {
         _table = new();
         // Creates a table using Spectre.Console and stores that table for later.
@@ -49,6 +49,7 @@ public abstract class InteractiveMenu : Menu
         {
             _table.AddRow(GetSelectableArrow(item), item.Name, item.Description);
         }
+
         _table.HideHeaders();
     }
 
@@ -123,9 +124,9 @@ public abstract class InteractiveMenu : Menu
                 break;
         }
     }
-    public virtual void Update()
+    public virtual void Update(string exitMessage)
     {
-        BuildTable();
+        BuildTable(exitMessage);
     }
     public int GetSelectedIndex() => _selectedIndex;
 }
