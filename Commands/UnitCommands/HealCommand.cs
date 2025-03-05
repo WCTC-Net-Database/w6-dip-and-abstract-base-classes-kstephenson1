@@ -16,7 +16,7 @@ public class HealCommand : ICommand
     {
         _unit = unit;
         _target = target;
-        _encounter = new(unit, target, 2, 6, 100, 10);
+        _encounter = new(unit, target);
     }
     public void Execute()
     {

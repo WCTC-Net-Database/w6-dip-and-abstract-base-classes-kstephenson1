@@ -77,7 +77,7 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
 
     [Ignore]
     [JsonIgnore]
-    public UnitStats Stats { get; set; } = null!;
+    public Stats Stats { get; set; } = null!;
 
     public UnitBase()
     {

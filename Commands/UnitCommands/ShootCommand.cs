@@ -16,7 +16,7 @@ public class ShootCommand : ICommand
     {
         _unit = unit;
         _target = target;
-        _encounter = new(unit, target, 1, 4, 70, 5);
+        _encounter = new(unit, target);
     }
 
     public void Execute()

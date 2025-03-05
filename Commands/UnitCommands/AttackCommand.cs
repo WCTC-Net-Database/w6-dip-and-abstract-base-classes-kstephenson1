@@ -16,7 +16,7 @@ public class AttackCommand : ICommand
     {
         _unit = unit;
         _target = target;
-        _encounter = new(unit, target, 1, 4, 80, 10);
+        _encounter = new(unit, target);
     }
     public void Execute()
     {

@@ -4,9 +4,9 @@ using w6_assignment_ksteph.DataTypes;
 
 namespace w6_assignment_ksteph.Combat;
 
-public class UnitStats
+public class Stats
 {
-    public UnitStats()
+    public Stats()
     {
         
     }

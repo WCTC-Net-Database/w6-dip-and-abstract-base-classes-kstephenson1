@@ -17,15 +17,15 @@ public class Encounter
     public int CritChance { get; set; }
     public int Damage {  get; set; }
 
-    public Encounter(IEntity unit, IEntity target, int minDamage, int maxDamage, int hitChance, int critChance)
+    public Encounter(IEntity unit, IEntity target)
     {
         Roll = _generator.Next(100) + 1;
         Unit = unit;
         Target = target;
-        MinDamage = minDamage;      // These stats will eventually be calculated using unit stats instead of directly
-        MaxDamage = maxDamage;      // in a constructor.
-        HitChance = hitChance;      //
-        CritChance = critChance;    //
+        MinDamage = 1;          // These stats will eventually be calculated using unit stats instead of directly
+        MaxDamage = 6;          // in a constructor.
+        HitChance = 80;         //
+        CritChance = 10;        //
         Damage = RollDamage();
     }
 
