@@ -1,4 +1,7 @@
-﻿using w6_assignment_ksteph.Commands.UnitCommands;
+﻿using CsvHelper.Configuration.Attributes;
+using System.Text.Json.Serialization;
+using w6_assignment_ksteph.Combat;
+using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -12,19 +15,16 @@ public class EnemyMage : MonsterBase, IMage
     // A Mage unit that is able to cast spells.
     public EnemyMage()
     {
-        Inventory.Unit = this;
+
     }
 
-    public EnemyMage(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position)
+    public EnemyMage(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position, Stats stats)
     {
-        Name = name;
-        Class = characterClass;
-        Level = level;
-        HitPoints = hitPoints;
-        Inventory = inventory;
-        Position = position;
-        Inventory.Unit = this;
+
     }
+
+    [Ignore]
+    [JsonIgnore]
     public CastCommand CastCommand { get; set; } = null!;
 
     public void Cast(string spellName)

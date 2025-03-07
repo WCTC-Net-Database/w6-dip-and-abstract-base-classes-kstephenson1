@@ -1,4 +1,7 @@
-﻿using w6_assignment_ksteph.Commands.UnitCommands;
+﻿using CsvHelper.Configuration.Attributes;
+using System.Text.Json.Serialization;
+using w6_assignment_ksteph.Combat;
+using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -13,21 +16,20 @@ public class EnemyCleric : MonsterBase, ICleric
     // An Cleric unit that is able to heal and cast spells.
     public EnemyCleric()
     {
-        Inventory.Unit = this;
+
     }
 
-    public EnemyCleric(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position)
+    public EnemyCleric(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position, Stats stats)
     {
-        Name = name;
-        Class = characterClass;
-        Level = level;
-        HitPoints = hitPoints;
-        Inventory = inventory;
-        Position = position;
-        Inventory.Unit = this;
+
     }
 
+    [Ignore]
+    [JsonIgnore]
     public HealCommand HealCommand { get; set; } = null!;
+
+    [Ignore]
+    [JsonIgnore]
     public CastCommand CastCommand { get; set; } = null!;
 
     public void Heal(IEntity target)

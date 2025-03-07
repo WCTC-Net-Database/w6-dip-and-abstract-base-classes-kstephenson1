@@ -1,4 +1,7 @@
-﻿using w6_assignment_ksteph.Commands.UnitCommands;
+﻿using CsvHelper.Configuration.Attributes;
+using System.Text.Json.Serialization;
+using w6_assignment_ksteph.Combat;
+using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -14,20 +17,16 @@ public class EnemyArcher : MonsterBase, IArcher
 
     public EnemyArcher()
     {
-        Inventory.Unit = this;
+
     }
 
-    public EnemyArcher(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position)
+    public EnemyArcher(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position, Stats stats)
     {
-        Name = name;
-        Class = characterClass;
-        Level = level;
-        HitPoints = hitPoints;
-        Inventory = inventory;
-        Position = position;
-        Inventory.Unit = this;
+
     }
 
+    [Ignore]
+    [JsonIgnore]
     public ShootCommand ShootCommand { get; set; }
 
     public void Shoot(IEntity target)

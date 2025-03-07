@@ -1,4 +1,5 @@
-﻿using w6_assignment_ksteph.DataTypes;
+﻿using w6_assignment_ksteph.Combat;
+using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Entities.Abstracts;
 using w6_assignment_ksteph.Inventories;
@@ -10,17 +11,11 @@ public class EnemyGoblin : MonsterBase
     // A Goblin unit that has no special implementation. . . yet?
     public EnemyGoblin()
     {
-        Inventory.Unit = this;
+
     }
 
-    public EnemyGoblin(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position)
+    public EnemyGoblin(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position, Stats stats)
     {
-        Name = name;
-        Class = characterClass;
-        Level = level;
-        HitPoints = hitPoints;
-        Inventory = inventory;
-        Position = position;
-        Inventory.Unit = this;
+
     }
 }

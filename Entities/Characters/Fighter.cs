@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using w6_assignment_ksteph.Combat;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -10,16 +11,16 @@ public class Fighter : CharacterBase
 {
     public Fighter()
     {
-        Inventory.Unit = this;
+
     }
-    public Fighter(string name, string characterClass, int level, int hitPoints, Inventory inventory, Position position)
+    public Fighter(string name, string characterClass, int level, Inventory inventory, Position position, Stats stats)
     {
         Name = name;
         Class = characterClass;
         Level = level;
-        HitPoints = hitPoints;
         Inventory = inventory;
         Position = position;
+        Stats = stats;
         Inventory.Unit = this;
     }
 }

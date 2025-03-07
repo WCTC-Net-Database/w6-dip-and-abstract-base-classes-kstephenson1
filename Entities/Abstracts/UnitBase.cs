@@ -30,12 +30,6 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
     [Name("Level")]                                         // CsvHelper Attribute
     public virtual int Level { get; set; }
 
-    [Name("HP")]                                            // CsvHelper Attribute
-    [JsonPropertyName("HP")]                                // Json Atribute
-    public virtual int HitPoints { get; set; }
-
-    public virtual int MaxHitPoints { get; set; }
-
     [Name("Inventory")]                                     // CsvHelper Attribute
     [JsonPropertyName("Inventory")]                         // Json Atribute
     [TypeConverter(typeof(CsvInventoryConverter))]          // CsvHelper Attribute that helps CsvHelper import a new inventory object instead of a string.
@@ -75,8 +69,6 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
     [JsonIgnore]
     public virtual MoveCommand MoveCommand { get; set; } = null!;
 
-    [Ignore]
-    [JsonIgnore]
     public Stats Stats { get; set; } = null!;
 
     public UnitBase()
@@ -84,13 +76,23 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
         Inventory.Unit = this;
     }
 
-    public UnitBase(string name, string characterClass, int level, int hitPoints, Inventory inventory)
+    public UnitBase(string name, string characterClass, int level, Inventory inventory)
     {
         Name = name;
         Class = characterClass;
         Level = level;
-        MaxHitPoints = hitPoints;
         Inventory = inventory;
+        Inventory.Unit = this;
+    }
+
+    public UnitBase(string name, string characterClass, int level, Inventory inventory, Position position, Stats stats)
+    {
+        Name = name;
+        Class = characterClass;
+        Level = level;
+        Inventory = inventory;
+        Position = position;
+        Stats = stats;
         Inventory.Unit = this;
     }
 
@@ -111,7 +113,7 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
     // Has the unit take damage then check if it is dead.
     public virtual void Damage(int damage)
     {
-        HitPoints -= damage;
+        Stats.HitPoints -= damage;
         OnHealthChanged();
 
         if (IsDead())
@@ -120,17 +122,17 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
 
     public virtual void Heal(int heal)
     {
-        HitPoints += heal;
+        Stats.HitPoints += heal;
         OnHealthChanged();
     }
 
     // Triggers every time this unit takes damage.
     public virtual void OnHealthChanged()
     {
-        if (HitPoints > MaxHitPoints)
-            HitPoints = MaxHitPoints;
-        if (HitPoints <= 0)
-            HitPoints = 0;
+        if (Stats.HitPoints > Stats.MaxHitPoints)
+            Stats.HitPoints = Stats.MaxHitPoints;
+        if (Stats.HitPoints <= 0)
+            Stats.HitPoints = 0;
     }
 
     // Triggers when this unit dies.
@@ -142,27 +144,29 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
     // Function to check to see if unit should be dead.
     public bool IsDead()
     {
-        return HitPoints <= 0;
+        return Stats.HitPoints <= 0;
     }
 
     public override string ToString()
     {
-        return $"{Name},{Class},{Level},{HitPoints},{Inventory}";
+        return $"{Name},{Class},{Level},{Stats.HitPoints},{Inventory}";
     }
 
     public string GetHealthBar()
     {
         string bar = "[[";
-        for (int i = 0; i < MaxHitPoints; i++)
+        for (int i = 0; i < Stats.MaxHitPoints; i++)
         {
-            if (i < HitPoints)
+            if (i != 0 && i % 30 == 0)
+                bar += "\n  ";
+            if (i < Stats.HitPoints)
                 bar += "[green]■[/]";
             else
                 bar += "[red3]■[/]";
         }
         bar += "]]";
 
-        if (HitPoints <= 0)
+        if (Stats.HitPoints <= 0)
         {
             return $"[dim]{bar}[/]";
         }

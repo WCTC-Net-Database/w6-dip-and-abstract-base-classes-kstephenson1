@@ -24,15 +24,15 @@ public class ItemPotion : Item, IConsumableItem
 
     public void UseItem()
     {
-        if (Inventory.Unit!.HitPoints >= Inventory.Unit.MaxHitPoints)
+        if (Inventory.Unit!.Stats.HitPoints >= Inventory.Unit.Stats.MaxHitPoints)
         {
             Console.WriteLine($"{Inventory.Unit.Name} is already at max health.");
         }
         else
         {
-            int preItemHP = Inventory.Unit.HitPoints;
+            int preItemHP = Inventory.Unit.Stats.HitPoints;
             Inventory.Unit.Heal(10);
-            int postItemHP = Inventory.Unit.MaxHitPoints;
+            int postItemHP = Inventory.Unit.Stats.MaxHitPoints;
             int healedHP = postItemHP - preItemHP;
             Console.WriteLine($"{Inventory.Unit.Name} used {Name} and gained {healedHP} hit points");
             UsesLeft--;

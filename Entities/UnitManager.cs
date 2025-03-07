@@ -36,7 +36,7 @@ public class UnitManager
 
         foreach (IEntity unit in Characters.Units)
         {
-            unit.MaxHitPoints = unit.HitPoints;
+            unit.Stats.MaxHitPoints = unit.Stats.HitPoints;
             unit.Inventory.Unit = unit;
             foreach (IItem item in unit.Inventory.Items!)
             {
@@ -46,12 +46,22 @@ public class UnitManager
 
         foreach (IEntity unit in Monsters.Units)
         {
-            unit.MaxHitPoints = unit.HitPoints;
+            unit.Stats.MaxHitPoints = unit.Stats.HitPoints;
         }
     }
 
     public void ExportUnits()                           //Exports the stored characters into the specified csv file
     {
-        _unitFileManager.Export<CharacterBase>(Characters.Units);
+        List<UnitBase> unitList = new();
+        foreach (UnitBase character in Characters.Units)
+        {
+            unitList.Add(character);
+        }
+
+        foreach (MonsterBase monster in Monsters.Units)
+        {
+            unitList.Add(monster);
+        }
+        _unitFileManager.Export<UnitBase>(unitList);
     }
 }

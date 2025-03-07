@@ -4,8 +4,6 @@
     "Name": "John, Brave",
     "Class": "Fighter",
     "Level": 1,
-    "HP": 10,
-    "MaxHitPoints": 10,
     "Inventory": [
       "sword",
       "shield",
@@ -14,14 +12,24 @@
     "Position": {
       "x": 1,
       "z": 1
+    },
+    "Stats": {
+      "HitPoints": 28,
+      "MaxHitPoints": 28,
+      "Movement": 5,
+      "Strength": 10,
+      "Magic": 6,
+      "Dexterity": 7,
+      "Speed": 7,
+      "Luck": 8,
+      "Defense": 6,
+      "Resistance": 2
     }
   },
   {
     "$type": "Characters.Wizard",
     "Name": "Jane",
     "Class": "Wizard",
-    "Level": 2,
-    "HP": 6,
     "MaxHitPoints": 6,
     "Inventory": [
       "staff",
@@ -31,6 +39,18 @@
     "Position": {
       "x": -1,
       "z": -3
+    },
+    "Stats": {
+      "HitPoints": 25,
+      "MaxHitPoints": 25,
+      "Movement": 5,
+      "Strength": 5,
+      "Magic": 11,
+      "Dexterity": 8,
+      "Speed": 7,
+      "Luck": 9,
+      "Defense": 3,
+      "Resistance": 5
     }
   },
   {
@@ -38,8 +58,6 @@
     "Name": "Bob, Sneaky",
     "Class": "Rogue",
     "Level": 3,
-    "HP": 8,
-    "MaxHitPoints": 8,
     "Inventory": [
       "dagger",
       "lockpick",
@@ -48,6 +66,18 @@
     "Position": {
       "x": 2,
       "z": 3
+    },
+    "Stats": {
+      "HitPoints": 26,
+      "MaxHitPoints": 26,
+      "Movement": 6,
+      "Strength": 8,
+      "Magic": 11,
+      "Dexterity": 8,
+      "Speed": 12,
+      "Luck": 12,
+      "Defense": 9,
+      "Resistance": 8
     }
   },
   {
@@ -55,8 +85,6 @@
     "Name": "Alice",
     "Class": "Cleric",
     "Level": 4,
-    "HP": 12,
-    "MaxHitPoints": 12,
     "Inventory": [
       "mace",
       "armor",
@@ -65,6 +93,18 @@
     "Position": {
       "x": 0,
       "z": 5
+    },
+    "Stats": {
+      "HitPoints": 27,
+      "MaxHitPoints": 27,
+      "Movement": 5,
+      "Strength": 7,
+      "Magic": 9,
+      "Dexterity": 7,
+      "Speed": 7,
+      "Luck": 10,
+      "Defense": 6,
+      "Resistance": 7
     }
   },
   {
@@ -72,8 +112,6 @@
     "Name": "Reginald III, Sir",
     "Class": "Knight",
     "Level": 5,
-    "HP": 20,
-    "MaxHitPoints": 20,
     "Inventory": [
       "sword",
       "armor",
@@ -82,19 +120,41 @@
     "Position": {
       "x": -1,
       "z": 1
+    },
+    "Stats": {
+      "HitPoints": 30,
+      "MaxHitPoints": 30,
+      "Movement": 4,
+      "Strength": 10,
+      "Magic": 9,
+      "Dexterity": 7,
+      "Speed": 5,
+      "Luck": 10,
+      "Defense": 13,
+      "Resistance": 5
     }
   },
   {
     "$type": "Monsters.EnemyGhost",
     "Name": "Poltergeist",
     "Class": "Ghost",
-    "Level": 4,
-    "HP": 14,
-    "MaxHitPoints": 14,
+    "Level": 1,
     "Equipment": [],
     "Position": {
       "x": 6,
       "y": 6
+    },
+    "Stats": {
+      "HitPoints": 25,
+      "MaxHitPoints": 25,
+      "Movement": 5,
+      "Strength": 8,
+      "Magic": 6,
+      "Dexterity": 7,
+      "Speed": 8,
+      "Luck": 8,
+      "Defense": 5,
+      "Resistance": 4
     }
   },
   {
@@ -102,51 +162,91 @@
     "Name": "Ruthless Treasure-Gather",
     "Class": "Goblin",
     "Level": 2,
-    "HP": 11,
-    "MaxHitPoints": 11,
     "Equipment": [],
     "Position": {
       "x": 5,
       "y": 7
+    },
+    "Stats": {
+      "HitPoints": 28,
+      "MaxHitPoints": 28,
+      "Movement": 5,
+      "Strength": 9,
+      "Magic": 7,
+      "Dexterity": 7,
+      "Speed": 8,
+      "Luck": 9,
+      "Defense": 6,
+      "Resistance": 2
     }
   },
   {
     "$type": "Monsters.EnemyArcher",
     "Name": "Sniper",
     "Class": "Archer",
-    "Level": 5,
-    "HP": 12,
-    "MaxHitPoints": 12,
+    "Level": 3,
     "Equipment": [],
     "Position": {
       "x": 4,
       "y": 4
+    },
+    "Stats": {
+      "HitPoints": 27,
+      "MaxHitPoints": 27,
+      "Movement": 5,
+      "Strength": 9,
+      "Magic": 7,
+      "Dexterity": 7,
+      "Speed": 8,
+      "Luck": 9,
+      "Defense": 6,
+      "Resistance": 2
     }
   },
   {
     "$type": "Monsters.EnemyMage",
     "Name": "Studious Spellcaster",
     "Class": "Mage",
-    "Level": 2,
-    "HP": 7,
-    "MaxHitPoints": 7,
+    "Level": 4,
     "Equipment": [],
     "Position": {
       "x": 9,
       "y": 3
+    },
+    "Stats": {
+      "HitPoints": 26,
+      "MaxHitPoints": 26,
+      "Movement": 5,
+      "Strength": 6,
+      "Magic": 10,
+      "Dexterity": 8,
+      "Speed": 9,
+      "Luck": 9,
+      "Defense": 6,
+      "Resistance": 7
     }
   },
   {
     "$type": "Monsters.EnemyCleric",
     "Name": "Doctor of the Fallen",
     "Class": "Cleric",
-    "Level": 3,
-    "HP": 9,
-    "MaxHitPoints": 9,
+    "Level": 5,
     "Equipment": [],
     "Position": {
       "x": 0,
       "y": 1
+    },
+    "Stats": {
+      "HitPoints": 29,
+      "MaxHitPoints": 29,
+      "Movement": 5,
+      "Strength": 8,
+      "Magic": 11,
+      "Dexterity": 8,
+      "Speed": 8,
+      "Luck": 8,
+      "Defense": 7,
+      "Resistance": 6
     }
   }
 ]

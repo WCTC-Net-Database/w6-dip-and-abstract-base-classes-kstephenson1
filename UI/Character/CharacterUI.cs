@@ -21,7 +21,7 @@ public class CharacterUI
         Grid hpTable = new Grid().Width(15).AddColumn();
         hpTable
             .AddRow(new Text($"Hit Points:").Centered())
-                .AddRow(new Text($"{character.HitPoints}/{character.MaxHitPoints}").Centered());
+                .AddRow(new Text($"{character.Stats.HitPoints}/{character.Stats.MaxHitPoints}").Centered());
 
         //Creates a table that just says "Inventory:" This may be redesigned later.
         Grid invHeader = new Grid().Width(25).AddColumn();

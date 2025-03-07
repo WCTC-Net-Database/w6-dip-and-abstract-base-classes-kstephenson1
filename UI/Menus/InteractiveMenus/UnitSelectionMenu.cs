@@ -41,7 +41,7 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
         foreach (IEntity unit in _unitManager.Characters.Units)
         {
             // Strikethrough and dim the unit info if the unit is not alive.
-            if (unit.HitPoints <= 0)
+            if (unit.Stats.HitPoints <= 0)
             {
                 AddMenuItem($"[green][dim][strikethrough]{unit.Name} Level {unit.Level} {unit.Class}[/][/][/]", $" {unit.GetHealthBar()}", unit);
             }
@@ -53,7 +53,7 @@ public class UnitSelectionMenu : InteractiveSelectionMenu<IEntity>
         // Adds all the monsters to the unit list using red letters.
         foreach (IEntity unit in _unitManager.Monsters.Units)
         {
-            if (unit.HitPoints <= 0)
+            if (unit.Stats.HitPoints <= 0)
             {
                 // Strikethrough and dim the unit info if the unit is not alive.
                 AddMenuItem($"[red][dim][strikethrough]{unit.Name} Level {unit.Level} {unit.Class}[/][/][/]", $" {unit.GetHealthBar()}", unit);
