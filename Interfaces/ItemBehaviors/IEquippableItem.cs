@@ -3,7 +3,7 @@ using w6_assignment_ksteph.Inventories;
 
 namespace w6_assignment_ksteph.Interfaces.ItemBehaviors;
 
-public interface IWeaponItem : IItem
+public interface IEquippableItem : IItem
 {
     public WeaponType WeaponType { get; set; }
     public WeaponRank RequiredRank { get; set; }

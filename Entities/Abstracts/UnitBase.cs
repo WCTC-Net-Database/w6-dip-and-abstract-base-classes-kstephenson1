@@ -173,7 +173,7 @@ public abstract class UnitBase : IEntity, ITargetable, IAttack, IHaveInventory
         return bar;
     }
 
-    public void Equip(IWeaponItem item)
+    public void Equip(IEquippableItem item)
     {
         EquipCommand = new(this, item);
         Invoker.ExecuteCommand(EquipCommand);

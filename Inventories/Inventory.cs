@@ -52,13 +52,13 @@ public class Inventory
         return Items!.Count >= 5;
     }
 
-    public bool IsEquipped(out IItem? weapon)
+    public bool IsEquipped(out IEquippableItem? weapon)
     {
         foreach(IItem item in Items!)
         {
-            if (item is WeaponItem)
+            if (item is IEquippableItem)
             {
-                weapon = (WeaponItem)item;
+                weapon = (IEquippableItem)item;
                 return true;
             }
         }
@@ -66,9 +66,9 @@ public class Inventory
         return false;
     }
 
-    public bool SetEquippedItem(WeaponItem item)
+    public bool SetEquippedItem(IEquippableItem item)
     {
-        IsEquipped(out IItem? weapon);
+        IsEquipped(out IEquippableItem? weapon);
         if (weapon != null && weapon != item)
         {
             Items!.Remove(item);
@@ -79,11 +79,11 @@ public class Inventory
     }
     public bool DamageEquippedItem()
     {
-        if (IsEquipped(out IItem? weapon))
+        if (IsEquipped(out IEquippableItem? weapon))
         {
-            if (weapon is WeaponItem)
+            if (weapon is IEquippableItem)
             {
-                ((WeaponItem)weapon!).TakeDurabilityDamage(1);
+                ((IEquippableItem)weapon!).TakeDurabilityDamage(1);
                 return true;
             }
             

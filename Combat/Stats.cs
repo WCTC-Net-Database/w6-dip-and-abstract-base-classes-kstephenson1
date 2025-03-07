@@ -23,63 +23,12 @@ public class Stats
     // // // // // // // // // // // // // // // // //
     // Primary Stats                                //
     // // // // // // // // // // // // // // // // //
+    public int Constitution { get; set; }       // CON
     public int Strength { get; set; }           // STR
+    public int Magic { get; set; }              // MAG
     public int Dexterity { get; set; }          // DEX
     public int Speed { get; set; }              // SPD
     public int Luck { get; set; }               // LCK
     public int Defense { get; set; }            // DEF
     public int Resistance { get; set; }         // RES
-
-    // // // // // // // // // // // // // // // // //
-    // Combat Calculations                          //
-    // // // // // // // // // // // // // // // // //
-
-    [Ignore]
-    [JsonIgnore]
-    public int TriangleDamageModifier { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int TriangleHitModifier { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int Attack { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int PhysicalResiliance { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int MagicResiliance { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int Damage { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int Hit { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int Avoid { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int DisplayedHit { get; set; }
-    
-    [Ignore]
-    [JsonIgnore]
-    public int Crit { get; set; }
-
-    [Ignore]
-    [JsonIgnore]
-    public int CritAvoid { get; set; }
-    [Ignore]
-    [JsonIgnore]
-    public int DisplayedCrit { get; set; }
-
-
 }

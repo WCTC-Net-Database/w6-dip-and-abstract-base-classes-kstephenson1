@@ -15,5 +15,5 @@ public interface IAttack
     EquipCommand EquipCommand { set; get; }
 
     void Attack(IEntity target);
-    void Equip(IWeaponItem item);
+    void Equip(IEquippableItem item);
 }

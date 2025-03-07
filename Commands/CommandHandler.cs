@@ -8,6 +8,7 @@ using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.DataHelper;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Interfaces.ItemBehaviors;
 using w6_assignment_ksteph.Items.WeaponItems;
 using w6_assignment_ksteph.UI;
 
@@ -49,7 +50,7 @@ public class CommandHandler
                         switch (itemCommand)
                         {
                             case EquipCommand:
-                                unit.Equip((item as WeaponItem)!);
+                                unit.Equip((item as IEquippableItem)!);
                                 break;
                             case UseItemCommand:
                                 unit.UseItem(item);

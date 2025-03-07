@@ -1,6 +1,7 @@
 ﻿namespace w6_assignment_ksteph.Entities;
 
 using Spectre.Console;
+using w6_assignment_ksteph.Combat;
 using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.DataHelper;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -51,8 +52,9 @@ public class CharacterUtilities
         character.Name = name;
         character.Class = characterClass.Name;
         character.Level = level;
-        character.HitPoints = hitPoints;
-        character.MaxHitPoints = hitPoints;
+        character.Stats = new Stats();
+        character.Stats.HitPoints = hitPoints;
+        character.Stats.MaxHitPoints = hitPoints;
         character.Inventory = inventory;
 
         _unitManager.Characters.AddUnit(character);

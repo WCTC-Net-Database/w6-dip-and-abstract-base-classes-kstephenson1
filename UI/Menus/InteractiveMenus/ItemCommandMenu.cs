@@ -54,9 +54,9 @@ public class ItemCommandMenu : InteractiveSelectionMenu<ICommand>
             AddMenuItem($"Use Item", $"{consumableItem.Description}", new UseItemCommand(null!));
         }
 
-        if (item is IWeaponItem weaponItem)
+        if (item is IEquippableItem weaponItem)
         {
-            weaponItem.Inventory.IsEquipped(out IItem? equippedItem);
+            weaponItem.Inventory.IsEquipped(out IEquippableItem? equippedItem);
             if (weaponItem == equippedItem)
             {
                 AddMenuItem($"[dim]Equip Item[/]", $"[[{weaponItem.Durability}/{weaponItem.MaxDurability}]] {weaponItem.Description}", null!);

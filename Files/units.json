@@ -17,6 +17,7 @@
       "HitPoints": 28,
       "MaxHitPoints": 28,
       "Movement": 5,
+      "Constitution": 7,
       "Strength": 10,
       "Magic": 6,
       "Dexterity": 7,
@@ -30,11 +31,11 @@
     "$type": "Characters.Wizard",
     "Name": "Jane",
     "Class": "Wizard",
-    "MaxHitPoints": 6,
+    "Level": 2,
     "Inventory": [
-      "staff",
+      "book_decay",
       "robe",
-      "book"
+      "staff"
     ],
     "Position": {
       "x": -1,
@@ -44,6 +45,7 @@
       "HitPoints": 25,
       "MaxHitPoints": 25,
       "Movement": 5,
+      "Constitution": 4,
       "Strength": 5,
       "Magic": 11,
       "Dexterity": 8,
@@ -71,6 +73,7 @@
       "HitPoints": 26,
       "MaxHitPoints": 26,
       "Movement": 6,
+      "Constitution": 5,
       "Strength": 8,
       "Magic": 11,
       "Dexterity": 8,
@@ -86,6 +89,7 @@
     "Class": "Cleric",
     "Level": 4,
     "Inventory": [
+      "book_smite",
       "mace",
       "armor",
       "potion"
@@ -98,6 +102,7 @@
       "HitPoints": 27,
       "MaxHitPoints": 27,
       "Movement": 5,
+      "Constitution": 4,
       "Strength": 7,
       "Magic": 9,
       "Dexterity": 7,
@@ -125,6 +130,7 @@
       "HitPoints": 30,
       "MaxHitPoints": 30,
       "Movement": 4,
+      "Constitution": 10,
       "Strength": 10,
       "Magic": 9,
       "Dexterity": 7,
@@ -139,6 +145,9 @@
     "Name": "Poltergeist",
     "Class": "Ghost",
     "Level": 1,
+    "Inventory": [
+      "ghostly_axe"
+    ],
     "Equipment": [],
     "Position": {
       "x": 6,
@@ -148,6 +157,7 @@
       "HitPoints": 25,
       "MaxHitPoints": 25,
       "Movement": 5,
+      "Constitution": 3,
       "Strength": 8,
       "Magic": 6,
       "Dexterity": 7,
@@ -162,6 +172,9 @@
     "Name": "Ruthless Treasure-Gather",
     "Class": "Goblin",
     "Level": 2,
+    "Inventory": [
+      "sword"
+    ],
     "Equipment": [],
     "Position": {
       "x": 5,
@@ -171,6 +184,7 @@
       "HitPoints": 28,
       "MaxHitPoints": 28,
       "Movement": 5,
+      "Constitution": 5,
       "Strength": 9,
       "Magic": 7,
       "Dexterity": 7,
@@ -185,6 +199,9 @@
     "Name": "Sniper",
     "Class": "Archer",
     "Level": 3,
+    "Inventory": [
+      "bow"
+    ],
     "Equipment": [],
     "Position": {
       "x": 4,
@@ -194,6 +211,7 @@
       "HitPoints": 27,
       "MaxHitPoints": 27,
       "Movement": 5,
+      "Constitution": 6,
       "Strength": 9,
       "Magic": 7,
       "Dexterity": 7,
@@ -208,6 +226,10 @@
     "Name": "Studious Spellcaster",
     "Class": "Mage",
     "Level": 4,
+    "Inventory": [
+      "book_lightning",
+      "potion"
+    ],
     "Equipment": [],
     "Position": {
       "x": 9,
@@ -217,6 +239,7 @@
       "HitPoints": 26,
       "MaxHitPoints": 26,
       "Movement": 5,
+      "Constitution": 4,
       "Strength": 6,
       "Magic": 10,
       "Dexterity": 8,
@@ -231,6 +254,11 @@
     "Name": "Doctor of the Fallen",
     "Class": "Cleric",
     "Level": 5,
+    "Inventory": [
+      "book_smite",
+      "potion",
+      "mace"
+    ],
     "Equipment": [],
     "Position": {
       "x": 0,
@@ -240,6 +268,7 @@
       "HitPoints": 29,
       "MaxHitPoints": 29,
       "Movement": 5,
+      "Constitution": 4,
       "Strength": 8,
       "Magic": 11,
       "Dexterity": 8,

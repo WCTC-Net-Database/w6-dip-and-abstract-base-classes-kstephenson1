@@ -24,9 +24,14 @@ public class CharacterUI
                 .AddRow(new Text($"{character.Stats.HitPoints}/{character.Stats.MaxHitPoints}").Centered());
 
         //Creates a table that just says "Inventory:" This may be redesigned later.
-        Grid invHeader = new Grid().Width(25).AddColumn();
+        Grid invHeader = new Grid().Width(25).AddColumns(2);
         invHeader
-            .AddRow(new Text($"{character.Position.ToString()}").RightJustified());
+            .AddRow(new Text($"  MOV: {character.Stats.Movement}").LeftJustified(), new Text($"CON: {character.Stats.Constitution}").LeftJustified())
+            .AddRow(new Text($"  STR: {character.Stats.Strength}").LeftJustified(), new Text($"MAG: {character.Stats.Magic}").LeftJustified())
+            .AddRow(new Text($"  DEX: {character.Stats.Dexterity}").LeftJustified(), new Text($"SPD: {character.Stats.Speed}").LeftJustified())
+            .AddRow(new Text($"  DEF: {character.Stats.Defense}").LeftJustified(), new Text($"RES: {character.Stats.Resistance}").LeftJustified())
+            .AddRow(new Text($"  LCK: {character.Stats.Luck}").LeftJustified());
+
 
         // Creates an inventory table that lists all the items in the character's inventory.
         Grid invTable = new Grid();

@@ -52,9 +52,9 @@ public class InventoryMenu : InteractiveSelectionMenu<IItem>
             {
                 AddMenuItem($"{consumableItem.Name}", $"[[{consumableItem.UsesLeft}/{consumableItem.MaxUses}]] {consumableItem.Description}", item);
             }
-            else if (item is IWeaponItem weaponItem)
+            else if (item is IEquippableItem weaponItem)
             {
-                unit.Inventory.IsEquipped(out IItem? equippedItem);
+                unit.Inventory.IsEquipped(out IEquippableItem? equippedItem);
                 if (weaponItem == equippedItem)
                 {
                     AddMenuItem($"{weaponItem.Name}", $"[[{weaponItem.Durability}/{weaponItem.MaxDurability}]] {weaponItem.Description} (Equipped)", item);

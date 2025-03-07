@@ -5,11 +5,11 @@ using w6_assignment_ksteph.Items;
 
 namespace w6_assignment_ksteph.Items.WeaponItems;
 
-public class WeaponItem : EquippableItem
+public class MagicWeaponItem : EquippableItem
 {
     // WeaponItem is a class that holds weapon item information
 
-    public WeaponItem(string id, string name, WeaponType weaponType, WeaponRank requiredRank, int maxDurability, int might, int hit, int crit, int range, int weight, int expModifier) : base(id, name, weaponType, requiredRank, maxDurability, might, hit, crit, range, weight, expModifier)
+    public MagicWeaponItem(string id, string name, WeaponType weaponType, WeaponRank requiredRank, int maxDurability, int might, int hit, int crit, int range, int weight, int expModifier) : base(id, name, weaponType, requiredRank, maxDurability, might, hit, crit, range, weight, expModifier)
     {
         
     }

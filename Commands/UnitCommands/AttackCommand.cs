@@ -1,6 +1,7 @@
 ﻿using w6_assignment_ksteph.Combat;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Items.WeaponItems;
 
 namespace w6_assignment_ksteph.Commands.UnitCommands;
 
@@ -14,6 +15,8 @@ public class AttackCommand : ICommand
     private readonly Encounter _encounter;
     public AttackCommand(IEntity unit, IEntity target)
     {
+        if (unit == null || target == null)
+            return;
         _unit = unit;
         _target = target;
         _encounter = new(unit, target);
@@ -24,7 +27,25 @@ public class AttackCommand : ICommand
         {
             if (_unit != _target)
             {
-                Console.WriteLine($"{_unit.Name} attacks {_target.Name}");
+                
+
+                if (_encounter.UnitWeapon is WeaponItem)
+                {
+                    Console.WriteLine($"{_unit.Name} attacks {_target.Name} with {_encounter.UnitWeapon.Name}\n");
+                    Console.WriteLine($"Hit Chance: {_encounter.GetDisplayedHit()}");
+                    Console.WriteLine($"Critical Strike Chance: {_encounter.GetDisplayedCrit()}");
+                    Console.WriteLine($"{_unit.Name}'s Damage: {_encounter.GetAttack()}");
+                    Console.WriteLine($"{_target.Name}'s Defense: {_encounter.GetPhysicalResiliance(_target)}");
+                } else if (_encounter.UnitWeapon is MagicWeaponItem)
+                {
+                    Console.WriteLine($"{_unit.Name} casts {_encounter.UnitWeapon.Name} at {_target.Name}\n");
+                    Console.WriteLine($"Hit Chance: {_encounter.GetDisplayedHit()}");
+                    Console.WriteLine($"Critical Strike Chance: {_encounter.GetDisplayedCrit()}");
+                    Console.WriteLine($"{_unit.Name}'s Magic Damage: {_encounter.GetMagicAttack()}");
+                    Console.WriteLine($"{_target.Name}'s Resistance: {_encounter.GetMagicResiliance(_target)}\n");
+                }
+
+                Console.WriteLine($"{_unit.Name} rolls a : {_encounter.Roll}");
 
                 if (_encounter.IsCrit())
                 {
