@@ -1,3 +1,17 @@
+## ConsoleRPG Feature Notes v0.1.6
+
+### New Abstract Classes
+- UnitBase - An abstract class to hold all the importent properties and methods that all units will use.  This includes name, level, stats, inventory, and etc.
+- MonsterBase - An abstract class
+- CharacterBase
+   - *Note: Even though at the moment MonsterBase and CharacterBase do not have any unique code, we use CharacterBase and MonsterBase to seperate the units between characters and monsters.  In addition, in the future we will probably want them seperate anyways so that the player can control the character units and the monsters can be automated*
+- EquippableItem is an abstract class that gives weapon items the properties and methods they need in order to be used to attack.
+- Menu - An abstract class that allows you to build simple menus.  Menu is implemented by the ExitMenu which shows the exit message when the game is exited.
+- InteractiveMenu - An abstract class that allows you to create a simple menu where you can use your arrow keys to select a menu item.
+   - *Note: Interactive Menu may be removed or become obsolete in the future*
+- InteractiveSelectionMenu - An abstract class that allows you to create an interactive menu that returns an object after a selection is made.  These menus are used to select units, commands, items, and other objects.
+- *Note: Item will become abstract ItemBase in the future but cannot be implemented without breaking new characters.*
+
 ### Week 6 Assignment: Dependency Inversion Principle (DIP) and Abstract Base Classes
 
 ---
