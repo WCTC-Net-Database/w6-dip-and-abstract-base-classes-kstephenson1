@@ -1,4 +1,4 @@
-﻿namespace w6_assignment_ksteph.FileIO;
+﻿namespace w6_assignment_ksteph.Interfaces.FileIO;
 
 public interface IFileIO
 {

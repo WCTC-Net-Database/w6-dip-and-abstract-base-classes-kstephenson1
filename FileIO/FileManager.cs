@@ -8,6 +8,7 @@ using w6_assignment_ksteph.Items;
 using w6_assignment_ksteph.Configuration;
 using w6_assignment_ksteph.Interfaces;
 using w6_assignment_ksteph.Entities.Abstracts;
+using w6_assignment_ksteph.Interfaces.FileIO;
 
 public class FileManager<T>
 {

@@ -8,7 +8,7 @@ using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.DataTypes.Structs;
 using w6_assignment_ksteph.FileIO.Csv.Converters;
 using w6_assignment_ksteph.Interfaces;
-using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Interfaces.UnitBehaviors;
 using w6_assignment_ksteph.Interfaces.InventoryBehaviors;
 using w6_assignment_ksteph.Interfaces.ItemBehaviors;
 using w6_assignment_ksteph.Inventories;

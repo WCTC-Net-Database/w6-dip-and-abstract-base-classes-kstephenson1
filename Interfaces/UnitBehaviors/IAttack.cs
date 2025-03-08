@@ -5,7 +5,7 @@ using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Interfaces.ItemBehaviors;
 
-namespace w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+namespace w6_assignment_ksteph.Interfaces.UnitBehaviors;
 
 public interface IAttack
 {

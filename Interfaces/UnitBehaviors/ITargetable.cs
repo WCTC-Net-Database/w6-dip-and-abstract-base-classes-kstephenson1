@@ -1,6 +1,6 @@
 ﻿using w6_assignment_ksteph.Combat;
 
-namespace w6_assignment_ksteph.Interfaces.CharacterBehaviors
+namespace w6_assignment_ksteph.Interfaces.UnitBehaviors
 {
     public interface ITargetable
     {

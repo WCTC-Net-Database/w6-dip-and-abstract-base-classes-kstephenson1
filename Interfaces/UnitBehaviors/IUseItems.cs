@@ -4,7 +4,7 @@ using w6_assignment_ksteph.Interfaces.ItemBehaviors;
 using w6_assignment_ksteph.Inventories;
 using w6_assignment_ksteph.Items;
 
-namespace w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+namespace w6_assignment_ksteph.Interfaces.UnitBehaviors;
 
 public interface IUseItems
 {

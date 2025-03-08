@@ -1,6 +1,6 @@
 ﻿using w6_assignment_ksteph.Combat;
 using w6_assignment_ksteph.Interfaces;
-using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Interfaces.UnitBehaviors;
 using w6_assignment_ksteph.Interfaces.InventoryBehaviors;
 using w6_assignment_ksteph.Interfaces.ItemBehaviors;
 using w6_assignment_ksteph.Items;

@@ -3,7 +3,7 @@ using w6_assignment_ksteph.Commands.ItemCommands;
 using w6_assignment_ksteph.Commands.UnitCommands;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Interfaces;
-using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Interfaces.UnitBehaviors;
 using w6_assignment_ksteph.Interfaces.InventoryBehaviors;
 
 namespace w6_assignment_ksteph.UI.Menus.InteractiveMenus;

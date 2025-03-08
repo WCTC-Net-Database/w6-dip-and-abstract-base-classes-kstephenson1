@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using w6_assignment_ksteph.Commands.Invokers;
 using w6_assignment_ksteph.Commands.UnitCommands;
 
-namespace w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+namespace w6_assignment_ksteph.Interfaces.UnitBehaviors;
 
 public interface IShootable
 {

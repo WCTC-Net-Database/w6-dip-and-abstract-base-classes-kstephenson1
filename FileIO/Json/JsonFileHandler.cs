@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 using w6_assignment_ksteph.DataTypes;
 using w6_assignment_ksteph.FileIO.Json.Converters;
 using w6_assignment_ksteph.Interfaces;
+using w6_assignment_ksteph.Interfaces.FileIO;
 using w6_assignment_ksteph.Inventories;
 
 public class JsonFileHandler<T> : ICharacterIO, IItemIO

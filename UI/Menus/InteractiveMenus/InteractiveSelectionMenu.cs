@@ -1,6 +1,6 @@
 ﻿namespace w6_assignment_ksteph.UI.Menus.InteractiveMenus;
 
-public class InteractiveSelectionMenu<T> : InteractiveMenu
+public abstract class InteractiveSelectionMenu<T> : InteractiveMenu
 {
 
     // The MainMenu contains items that have 4 parts, the index, the name, the description, and the action that

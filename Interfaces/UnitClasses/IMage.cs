@@ -1,5 +1,5 @@
 ﻿using w6_assignment_ksteph.Commands.UnitCommands;
-using w6_assignment_ksteph.Interfaces.CharacterBehaviors;
+using w6_assignment_ksteph.Interfaces.UnitBehaviors;
 
 namespace w6_assignment_ksteph.Interfaces.UnitClasses;
 
