@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using w6_assignment_ksteph.Combat;
 using w6_assignment_ksteph.Commands;
 using w6_assignment_ksteph.Entities;
 using w6_assignment_ksteph.Entities.Abstracts;
@@ -17,6 +18,7 @@ class Program
         services.AddTransient<UserInterface>();
         services.AddTransient<CharacterUtilities>();
         services.AddTransient<CharacterUI>();
+        services.AddTransient<CombatHandler>();
         services.AddTransient<CommandHandler>();
         services.AddTransient<CommandMenu>();
         services.AddTransient<ExitMenu>();
@@ -32,9 +34,9 @@ class Program
 
         UnitManager unitManager = provider.GetRequiredService<UnitManager>();
         UserInterface userInterface = provider.GetRequiredService<UserInterface>();
-        CommandHandler commandHandler = provider.GetRequiredService<CommandHandler>();
+        CombatHandler combatHandler = provider.GetRequiredService<CombatHandler>();
 
-        GameEngine engine = new GameEngine(unitManager, userInterface, commandHandler);
+        GameEngine engine = new GameEngine(unitManager, userInterface, combatHandler);
         engine.StartGameEngine();
     }
 }
